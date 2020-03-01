@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Официальный сайт Президента Зимбабве</title>
+    <!-- <script type="text/javascript" src="JS/main.js" defer></script> -->
+	<script src="{{url_for('static', filename = 'Lib/jquery-3.1.1.min.js')}}"></script>
+	<link href="{{url_for('static', filename = 'Lib/bootstrap.css')}}" rel="stylesheet"
+	      type="text/css"/>
+    <link href="{{url_for('static', filename = 'CSS/main.css')}}" rel="stylesheet" type="text/css" />
+    <script src="{{url_for('static', filename = 'JS/main.js')}}"></script>
+    <!-- <link rel="stylesheet" href="CSS/main.css"> -->
+</head>
+
+<body class="body">
+    <div class="overlay">
+        <div class="modal-window">
+            <div class="modal-zag">Расчёт единоразовой выплаты</div>
+            <div class="inf">Выберите данные соответствующие вам. После обработки заявки мы с вами свяжемся</div>
+            <div class="form-vvod">
+                <div class="vvod">
+                    <div>Количество детей:</div>
+                    <input id="input1" class="vvodinput" type="number" value="Введите количество">
+                </div>
+            </div>
+            <div class="form-vvod">
+                <div class="vvod">
+                    <div>Количество отработанных лет:</div>
+                    <input id="input2" class="vvodinput" type="number" value="Введите количество">
+                </div>
+            </div>
+            <div class="form-vvod">
+                <div class="vvod">
+                    <div>Количество лет гражданства Зимбабве:</div>
+                    <input id="input3" class="vvodinput" type="number" value="Введите количество">
+                </div>
+            </div>
+            <button class="button2" onclick="calculate()">Подсчитать</button>
+            <span id="result"></span>
+            <div class="close" onclick="close_modal()"></div>
+        </div>
+    </div>
+    <main id="main">
+        <div class="main-bg">
+            <img class="img-fluid" src="static/PNG/main-bg.png">
+        </div>
+        <nav class="nav">
+            <div class="row">
+                <img class="logo" src="static/PNG/logo.png">
+                <div class="president">Президент Зимбабве</div>
+                {% if current_user.is_authenticated %} {{ username }} {% endif %}
+            </div>
+            <div class="col align-self-end">
+                <div class="header-list">
+                    <a href="http://localhost:5000/feeds">Новости</a>
+                    <a href="#problems">Проблемы</a>
+                    <a href="#structure">Структура</a>
+                    <a href="#video_photo">Видео и фото</a>
+                    <a href="#documents">Документы</a>
+                    <a href="#contacts">Контакты</a>
+                    <input class="form-control1" type="text" name="">
+                    <button class="button1" onclick="show_modal()">Калькулятор</button>
+                </div>
+            </div>
+        </nav>
+        <div class="first-screen">
+            <div class="zag">Официальный сайт</div>
+            <div class="zag">Президента Зимбабве</div>
+        </div>
+        <div class="offset-md-1">
+            <div class="last-feed">
+                <div class="abz">Последние новости</div>
+                <div class="list">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="feed mb-5">
+                                <a href="http://localhost:5000/feed1" class="feeds">
+                                    <img src="static/PNG/feed2.png" class="pic">
+                                    <div class="text1">Нефть в Зимбабве</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="feed mb-5">
+                                <a href="#feed3" class="feeds">
+                                    <img src="static/PNG/feed3.png" class="pic">
+                                    <div class="text2">Решение вопроса о загрезнении окражающеей среды</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="feed mb-5">
+                                <a href="#feed1" class="feeds">
+                                    <img src="static/PNG/feed1.png" class="pic">
+                                    <div class="text3">Президент встретился с Д. Трампом на форуме WEF</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="feed mb-5">
+                                <a href="#feed4" class="feeds">
+                                    <img src="static/PNG/feed4.png" class="pic">
+                                    <div class="text4">Благоустройство района Аль-деви</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main2-bg">
+            <img class="img-fluid" src="static/PNG/main2-bg.png">
+        </div>
+        <div class="offset-md-1">
+            <div class="ask">
+                <div class="col-md-4">
+                    <div class="ask__zag">Хотите задать вопрос президенту лично</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="inf">Новым поставлением президента вы можете создать онлайн обращение с интересующим Вас вопросом<br></br>Информируем, что реализация права на обращение в форме электронного документа осуществляется в соответствии с законодательством
+                            с обеспечением защиты прав человека.
+                        </div>
+                    </div>
+                    <div class="col-md-4 offset-md-1">
+                        <div class="row">
+                            <input class="form-control2" type="text" name="" value="Ваше имя">
+                            <input class="form-control2" type="text" name="" value="Ваша почта">
+                        </div>
+                        <div class="row">
+                            <div class="utoch">*Ваши данные остануться в сохранности</div>
+                            <button class="button">Перейти к созданию обращения</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offset-md-1">
+            <div class="m1">
+                <div class="map">
+                    <div class="map__Z">Карта Зимбабве</div>
+                    <img class="map__img" src="static/PNG/map.png">
+                </div>
+                <img class="herb" src="static/PNG/herb.png">
+            </div>
+        </div>
+        <div class="footer">
+            <img src="static/PNG/logo.svg" class="logo-footer">
+            <ul class="col-md-2 offset-md-4">
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#problems">Проблемы</a></li>
+                <li><a href="#structure">Структура</a></li>
+                <li><a href="#video_photo">Видео и фото</a></li>
+                <li><a href="#documents">Документы</a></li>
+            </ul>
+            <ul class="col-3">
+                <li>Адрес: г.Агеиль 28566</li>
+                <li>Телефон: 485 (023) 355</li>
+                <li>Отдел работы с гражданами: 10:00 - 20:00</li>
+                <li>E-mail: zimbabve@prezident.com</li>
+                <li>
+                    <div class="row">
+                        <a href="#youtube"><img src="static/PNG/youtube.png"></a>
+                        <a href="https://vk.com/id104109608"><img src="static/PNG/vk.png"></a>
+                        <a href="#facebook"><img src="static/PNG/facebook.png"></a>
+                        <a href="#instagram"><img src="static/PNG/instagram.png"></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+</body>
+
+</html>

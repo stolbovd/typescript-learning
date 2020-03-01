@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "outDir": "../js/built/",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "module": "amd",
+        "target": "es5",
+        "lib": [
+            "es2015.promise",
+            "dom",
+            "es5"
+        ]
+    },
+    "include": ["../ts/**/*"]
+}
